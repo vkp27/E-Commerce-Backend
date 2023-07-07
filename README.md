@@ -166,3 +166,118 @@ DELETE /api/products/60dfc0a4e827a51e1c745fab
 ```
 HTTP/1.1 204 No Content
 ```
+
+# User API
+
+## Create a new user
+Create a new user with attributes like name, email, password, and address.
+```
+URL: /api/users
+Method: POST
+Authentication: Not required
+```
+```
+Request Body:
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123",
+  "address": "123 Example Street"
+}
+
+Response:
+Status Code: 201 (Created)
+Body:
+{
+  "_id": "user-id",
+  "name": "John Doe",
+  "email": "john@example.com",
+  "address": "123 Example Street"
+}
+```
+
+## Retrieve a list of all users
+```
+Retrieve a list of all registered users.
+
+URL: /api/users
+Method: GET
+Authentication: Not required
+```
+```
+Response:
+Status Code: 200 (OK)
+Body:
+[
+  {
+    "_id": "user-id",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "address": "123 Example Street"
+  },
+  {
+    "_id": "another-user-id",
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "address": "456 Example Street"
+  }
+]
+```
+
+## Retrieve details of a specific user
+```
+URL: /api/users/:id
+Method: GET
+Authentication: Not required
+Parameters:
+id: The ID of the user
+```
+```
+Response:
+Status Code: 200 (OK)
+Body:
+{
+  "_id": "user-id",
+  "name": "John Doe",
+  "email": "john@example.com",
+  "address": "123 Example Street"
+}
+```
+
+## Update the details of an existing user
+```
+URL: /api/users/:id
+Method: PUT
+Authentication: Required
+Parameters:
+id: The ID of the user
+```
+```
+Request Body:
+{
+  "name": "Updated Name",
+  "email": "updated@example.com",
+  "address": "456 Updated Street"
+}
+Response:
+Status Code: 200 (OK)
+Body:
+{
+  "_id": "user-id",
+  "name": "Updated Name",
+  "email": "updated@example.com",
+  "address": "456 Updated Street"
+}
+```
+
+## Delete a user
+```
+URL: /api/users/:id
+Method: DELETE
+Authentication: Required
+Parameters:
+id: The ID of the user
+Response:
+Status Code: 204 (No Content)
+```
